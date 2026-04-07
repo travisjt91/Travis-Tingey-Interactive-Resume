@@ -1,893 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Travis Tingey — Finance Director</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --blue: #1a3f8f;
-    --blue-dark: #0f2660;
-    --blue-light: #e8eef8;
-    --blue-mid: #2f5cc8;
-    --black: #0d0d0d;
-    --white: #ffffff;
-    --gray-50: #f8f9fa;
-    --gray-100: #f0f2f5;
-    --gray-200: #e2e6ec;
-    --gray-400: #8f96a3;
-    --gray-600: #4a5568;
-    --gold: #c9a84c;
-  }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--gray-50);
-    color: var(--black);
-    min-height: 100vh;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    background: var(--blue-dark);
-    color: var(--white);
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: 40%;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .header-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 3rem 2rem 2.5rem;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 2rem;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .avatar-wrap {
-    position: relative;
-  }
-
-  .avatar {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.3);
-    object-fit: cover;
-    background: var(--blue-mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--white);
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .avatar-initials {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.3);
-    background: linear-gradient(135deg, var(--blue-mid), var(--blue));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--white);
-    flex-shrink: 0;
-  }
-
-  .hero-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    color: var(--white);
-  }
-
-  .hero-text .subtitle {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    margin-top: 6px;
-  }
-
-  .hero-text .tagline {
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    margin-top: 12px;
-    line-height: 1.6;
-    max-width: 480px;
-  }
-
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-  }
-
-  .linkedin-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--white);
-    color: var(--blue-dark);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.15s ease;
-    letter-spacing: 0.3px;
-  }
-
-  .linkedin-btn:hover { background: var(--gold); color: var(--white); }
-
-  .linkedin-icon {
-    width: 14px; height: 14px;
-    fill: currentColor;
-  }
-
-  .hero-contact {
-    font-size: 11.5px;
-    color: rgba(255,255,255,0.5);
-    text-align: right;
-    line-height: 1.9;
-  }
-
-  /* ── METRICS BAR ── */
-  .metrics-bar {
-    background: var(--blue);
-    padding: 1.25rem 2rem;
-  }
-
-  .metrics-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0;
-  }
-
-  .metric-item {
-    text-align: center;
-    padding: 0.5rem;
-    border-right: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .metric-item:last-child { border-right: none; }
-
-  .metric-val {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1;
-  }
-
-  .metric-lbl {
-    font-size: 9.5px;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  /* ── NAV ── */
-  .nav-wrap {
-    background: var(--white);
-    border-bottom: 1px solid var(--gray-200);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .nav-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .nav-tab {
-    font-size: 13px;
-    font-weight: 500;
-    padding: 1rem 1.25rem;
-    border: none;
-    background: transparent;
-    color: var(--gray-400);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.15s ease;
-    letter-spacing: 0.3px;
-  }
-
-  .nav-tab:hover { color: var(--blue); }
-  .nav-tab.active { color: var(--blue-dark); border-bottom-color: var(--blue); }
-
-  /* ── MAIN LAYOUT ── */
-  .main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .section { display: none !important; }
-  .section.visible { display: block !important; }
-
-  .section-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gray-400);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--gray-200);
-  }
-
-  /* ── EXPERIENCE CARDS ── */
-  .exp-card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-
-  .exp-card:hover {
-    border-color: var(--blue);
-    box-shadow: 0 2px 20px rgba(26,63,143,0.07);
-  }
-
-  .exp-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .exp-logo {
-    width: 40px; height: 40px;
-    border-radius: 8px;
-    background: var(--blue-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--blue-dark);
-    letter-spacing: -0.5px;
-    flex-shrink: 0;
-  }
-
-  .exp-title-block { flex: 1; }
-
-  .exp-role {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--black);
-    line-height: 1.2;
-  }
-
-  .exp-company {
-    font-size: 13px;
-    color: var(--gray-600);
-    margin-top: 3px;
-  }
-
-  .exp-meta {
-    text-align: right;
-  }
-
-  .badge {
-    font-size: 10px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 100px;
-    letter-spacing: 0.3px;
-  }
-
-  .badge-blue { background: var(--blue-light); color: var(--blue-dark); }
-  .badge-green { background: #e6f4ea; color: #1b5e20; }
-  .badge-amber { background: #fff8e1; color: #7a5800; }
-
-  .exp-date {
-    font-size: 11px;
-    color: var(--gray-400);
-    margin-top: 5px;
-  }
-
-  .exp-bullets {
-    list-style: none;
-    margin-top: 0.5rem;
-  }
-
-  .exp-bullets li {
-    font-size: 13.5px;
-    color: var(--gray-600);
-    line-height: 1.65;
-    padding: 3px 0 3px 18px;
-    position: relative;
-  }
-
-  .exp-bullets li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 13px;
-    width: 6px; height: 1px;
-    background: var(--blue);
-  }
-
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .skill-card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 1.25rem;
-  }
-
-  .skill-card-title {
-    font-size: 10px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--blue);
-    margin-bottom: 0.75rem;
-  }
-
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-  .tag {
-    font-size: 12px;
-    padding: 4px 11px;
-    border-radius: 100px;
-    border: 1px solid var(--gray-200);
-    color: var(--gray-600);
-    background: var(--gray-50);
-  }
-
-  /* ── EDUCATION ── */
-  .edu-card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-
-  .edu-icon {
-    width: 44px; height: 44px;
-    border-radius: 10px;
-    background: var(--blue-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .edu-school {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--black);
-  }
-
-  .edu-degree {
-    font-size: 13px;
-    color: var(--gray-600);
-    margin-top: 4px;
-    line-height: 1.6;
-  }
-
-  /* ── CHAT ── */
-  .chat-wrap {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .chat-header {
-    background: var(--blue-dark);
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .chat-avatar {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: var(--blue-mid);
-    border: 2px solid rgba(255,255,255,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--white);
-    font-family: 'Playfair Display', serif;
-  }
-
-  .chat-header-info h3 {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--white);
-  }
-
-  .chat-header-info p {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    margin-top: 1px;
-  }
-
-  .chat-status {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #4ade80;
-    margin-left: auto;
-    flex-shrink: 0;
-  }
-
-  .recruiter-chips {
-    padding: 1rem 1.5rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .chip-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gray-400);
-    width: 100%;
-    margin-bottom: 4px;
-  }
-
-  .chip {
-    font-size: 12px;
-    padding: 6px 13px;
-    border-radius: 100px;
-    border: 1px solid var(--gray-200);
-    background: var(--gray-50);
-    color: var(--gray-600);
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.12s ease;
-  }
-
-  .chip:hover { background: var(--blue-light); color: var(--blue-dark); border-color: var(--blue); }
-
-  .chat-messages {
-    padding: 1.25rem 1.5rem;
-    min-height: 120px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .bubble {
-    font-size: 13.5px;
-    line-height: 1.65;
-    padding: 10px 14px;
-    border-radius: 12px;
-    max-width: 82%;
-  }
-
-  .bubble-travis {
-    background: var(--blue-light);
-    color: var(--black);
-    align-self: flex-start;
-    border-bottom-left-radius: 3px;
-  }
-
-  .bubble-user {
-    background: var(--blue-dark);
-    color: var(--white);
-    align-self: flex-end;
-    border-bottom-right-radius: 3px;
-  }
-
-  .bubble-loading {
-    background: var(--gray-100);
-    color: var(--gray-400);
-    align-self: flex-start;
-    font-style: italic;
-    font-size: 13px;
-  }
-
-  .chat-input-row {
-    display: flex;
-    gap: 8px;
-    padding: 1rem 1.5rem;
-    border-top: 1px solid var(--gray-200);
-    background: var(--gray-50);
-  }
-
-  .chat-input {
-    flex: 1;
-    padding: 10px 14px;
-    border: 1px solid var(--gray-200);
-    border-radius: 100px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--black);
-    outline: none;
-    transition: border-color 0.15s;
-  }
-
-  .chat-input:focus { border-color: var(--blue); }
-
-  .chat-send {
-    background: var(--blue-dark);
-    color: var(--white);
-    border: none;
-    border-radius: 100px;
-    padding: 0 20px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: background 0.15s;
-  }
-
-  .chat-send:hover { background: var(--blue-mid); }
-
-  /* ── MODELING TAB ── */
-  .tool-card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .tool-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--black);
-    margin-bottom: 0.5rem;
-  }
-
-  .tool-desc {
-    font-size: 13px;
-    color: var(--gray-600);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
-
-  .driver-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 1.25rem;
-  }
-
-  .driver-row {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .driver-label {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--gray-600);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-
-  .driver-input {
-    padding: 8px 12px;
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--black);
-    background: var(--gray-50);
-    outline: none;
-    transition: border-color 0.15s;
-  }
-
-  .driver-input:focus { border-color: var(--blue); background: var(--white); }
-
-  .tool-btn {
-    background: var(--blue-dark);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    padding: 11px 24px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: background 0.15s;
-    width: 100%;
-  }
-
-  .tool-btn:hover { background: var(--blue-mid); }
-  .tool-btn:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
-
-  .tool-output {
-    background: var(--blue-light);
-    border: 1px solid #c5d5f0;
-    border-radius: 10px;
-    padding: 1.25rem;
-    margin-top: 1.25rem;
-    font-size: 13.5px;
-    color: var(--black);
-    line-height: 1.7;
-    white-space: pre-wrap;
-    display: none;
-  }
-
-  .tool-output.visible { display: block; }
-
-  /* ── CASE STUDY ── */
-  .case-examples {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 1rem;
-  }
-
-  .case-chip {
-    font-size: 12px;
-    padding: 7px 14px;
-    border-radius: 8px;
-    border: 1px solid var(--gray-200);
-    background: var(--gray-50);
-    color: var(--gray-600);
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.12s ease;
-    text-align: left;
-  }
-
-  .case-chip:hover { background: var(--blue-light); color: var(--blue-dark); border-color: var(--blue); }
-
-  textarea.driver-input {
-    resize: vertical;
-    min-height: 80px;
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .header-inner { grid-template-columns: 1fr; text-align: center; }
-    .hero-right { align-items: center; }
-    .hero-contact { text-align: center; }
-    .metrics-inner { grid-template-columns: repeat(3, 1fr); }
-    .skills-grid { grid-template-columns: 1fr; }
-    .driver-grid { grid-template-columns: 1fr; }
-    .exp-top { flex-wrap: wrap; }
-    .avatar-initials { margin: 0 auto; }
-    .hero-text h1 { font-size: 28px; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --blue:#1a3f8f;--blue-dark:#0f2660;--blue-light:#e8eef8;--blue-mid:#2f5cc8;
+  --black:#0d0d0d;--white:#ffffff;
+  --g50:#f8f9fa;--g100:#f0f2f5;--g200:#e2e6ec;--g400:#8f96a3;--g600:#4a5568;
+  --gold:#c9a84c;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--g50);color:var(--black);min-height:100vh;}
+.hdr{background:var(--blue-dark);color:var(--white);position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);}
+.hdr-in{max-width:960px;margin:0 auto;padding:3rem 2rem 2.5rem;display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:center;position:relative;z-index:1;}
+.av{width:110px;height:110px;border-radius:50%;border:3px solid rgba(255,255,255,0.3);background:linear-gradient(135deg,var(--blue-mid),var(--blue));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--white);flex-shrink:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;line-height:1.1;letter-spacing:-0.5px;color:var(--white);}
+.hero .sub{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px;}
+.hero .tag{font-size:14px;color:rgba(255,255,255,0.75);margin-top:12px;line-height:1.6;max-width:480px;}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.li-btn{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--blue-dark);font-size:12px;font-weight:500;padding:8px 16px;border-radius:100px;text-decoration:none;transition:all 0.15s;letter-spacing:0.3px;}
+.li-btn:hover{background:var(--gold);color:var(--white);}
+.li-btn svg{width:14px;height:14px;fill:currentColor;}
+.hdr-contact{font-size:11.5px;color:rgba(255,255,255,0.5);text-align:right;line-height:1.9;}
+.mbar{background:var(--blue);padding:1.25rem 2rem;}
+.mbar-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);}
+.mi{text-align:center;padding:0.5rem;border-right:1px solid rgba(255,255,255,0.1);}
+.mi:last-child{border-right:none;}
+.mv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--white);line-height:1;}
+.ml{font-size:9.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.nav{background:var(--white);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:100;}
+.nav-in{max-width:960px;margin:0 auto;padding:0 2rem;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nt{font-size:13px;font-weight:500;padding:1rem 1.25rem;border:none;background:transparent;color:var(--g400);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:all 0.15s;letter-spacing:0.3px;}
+.nt:hover{color:var(--blue);}
+.nt.active{color:var(--blue-dark);border-bottom-color:var(--blue);}
+.main{max-width:960px;margin:0 auto;padding:2rem;}
+.sec{display:none;}
+.sec.on{display:block;}
+.slbl{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--g400);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--g200);}
+.card{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:1.5rem;margin-bottom:1rem;transition:border-color 0.15s,box-shadow 0.15s;}
+.card:hover{border-color:var(--blue);box-shadow:0 2px 20px rgba(26,63,143,0.07);}
+.etop{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+.elogo{width:40px;height:40px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--blue-dark);flex-shrink:0;}
+.etb{flex:1;}
+.er{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--black);line-height:1.2;}
+.ec{font-size:13px;color:var(--g600);margin-top:3px;}
+.emeta{text-align:right;}
+.badge{font-size:10px;font-weight:500;padding:3px 10px;border-radius:100px;}
+.b-blue{background:var(--blue-light);color:var(--blue-dark);}
+.b-green{background:#e6f4ea;color:#1b5e20;}
+.b-amber{background:#fff8e1;color:#7a5800;}
+.edate{font-size:11px;color:var(--g400);margin-top:5px;}
+.ebul{list-style:none;margin-top:0.5rem;}
+.ebul li{font-size:13.5px;color:var(--g600);line-height:1.65;padding:3px 0 3px 18px;position:relative;}
+.ebul li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--blue);}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.scard{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:1.25rem;}
+.sct{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:0.75rem;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-size:12px;padding:4px 11px;border-radius:100px;border:1px solid var(--g200);color:var(--g600);background:var(--g50);}
+.edu{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:1.5rem;margin-bottom:1rem;display:flex;gap:1rem;align-items:flex-start;}
+.edu-ico{width:44px;height:44px;border-radius:10px;background:var(--blue-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.edu-s{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--black);}
+.edu-d{font-size:13px;color:var(--g600);margin-top:4px;line-height:1.6;}
+.chat{background:var(--white);border:1px solid var(--g200);border-radius:12px;overflow:hidden;}
+.chat-hdr{background:var(--blue-dark);padding:1rem 1.5rem;display:flex;align-items:center;gap:12px;}
+.chat-av{width:36px;height:36px;border-radius:50%;background:var(--blue-mid);border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--white);font-family:'Playfair Display',serif;}
+.chat-hdr h3{font-size:14px;font-weight:500;color:var(--white);}
+.chat-hdr p{font-size:11px;color:rgba(255,255,255,0.5);margin-top:1px;}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;margin-left:auto;flex-shrink:0;}
+.chips{padding:1rem 1.5rem 0;display:flex;flex-wrap:wrap;gap:6px;}
+.clbl{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--g400);width:100%;margin-bottom:4px;}
+.chip{font-size:12px;padding:6px 13px;border-radius:100px;border:1px solid var(--g200);background:var(--g50);color:var(--g600);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.12s;}
+.chip:hover{background:var(--blue-light);color:var(--blue-dark);border-color:var(--blue);}
+.chip-dl{background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark);}
+.chip-dl:hover{background:var(--blue-mid);color:var(--white);}
+.msgs{padding:1.25rem 1.5rem;min-height:120px;display:flex;flex-direction:column;gap:10px;}
+.bub{font-size:13.5px;line-height:1.65;padding:10px 14px;border-radius:12px;max-width:82%;}
+.b-travis{background:var(--blue-light);color:var(--black);align-self:flex-start;border-bottom-left-radius:3px;}
+.b-user{background:var(--blue-dark);color:var(--white);align-self:flex-end;border-bottom-right-radius:3px;}
+.b-load{background:var(--g100);color:var(--g400);align-self:flex-start;font-style:italic;font-size:13px;}
+.inp-row{display:flex;gap:8px;padding:1rem 1.5rem;border-top:1px solid var(--g200);background:var(--g50);}
+.cinp{flex:1;padding:10px 14px;border:1px solid var(--g200);border-radius:100px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);outline:none;transition:border-color 0.15s;}
+.cinp:focus{border-color:var(--blue);}
+.csend{background:var(--blue-dark);color:var(--white);border:none;border-radius:100px;padding:0 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.15s;}
+.csend:hover{background:var(--blue-mid);}
+.tcrd{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;}
+.tttl{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--black);margin-bottom:0.5rem;}
+.tdesc{font-size:13px;color:var(--g600);margin-bottom:1.25rem;line-height:1.6;}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem;}
+.drow{display:flex;flex-direction:column;gap:4px;}
+.dlbl{font-size:11px;font-weight:500;color:var(--g600);text-transform:uppercase;letter-spacing:0.8px;}
+.dinp{padding:8px 12px;border:1px solid var(--g200);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--black);background:var(--g50);outline:none;transition:border-color 0.15s;}
+.dinp:focus{border-color:var(--blue);background:var(--white);}
+textarea.dinp{resize:vertical;min-height:80px;width:100%;margin-bottom:1rem;}
+.tbtn{background:var(--blue-dark);color:var(--white);border:none;border-radius:8px;padding:11px 24px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.15s;width:100%;}
+.tbtn:hover{background:var(--blue-mid);}
+.tbtn:disabled{background:var(--g200);color:var(--g400);cursor:not-allowed;}
+.tout{background:var(--blue-light);border:1px solid #c5d5f0;border-radius:10px;padding:1.25rem;margin-top:1.25rem;font-size:13.5px;color:var(--black);line-height:1.7;white-space:pre-wrap;display:none;}
+.tout.on{display:block;}
+.cchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;}
+.cchip{font-size:12px;padding:7px 14px;border-radius:8px;border:1px solid var(--g200);background:var(--g50);color:var(--g600);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.12s;text-align:left;}
+.cchip:hover{background:var(--blue-light);color:var(--blue-dark);border-color:var(--blue);}
+.tline{display:flex;flex-direction:column;padding-left:1.5rem;border-left:2px solid var(--g200);margin-left:0.5rem;}
+.titem{position:relative;padding-bottom:1.5rem;}
+.titem:last-child{padding-bottom:0;}
+.tdot{position:absolute;left:-1.75rem;top:4px;width:10px;height:10px;border-radius:50%;}
+.ti-ttl{font-size:13px;font-weight:500;color:var(--black);}
+.ti-sub{font-size:12px;color:var(--g400);margin-top:2px;}
+@media(max-width:640px){
+  .hdr-in{grid-template-columns:1fr;text-align:center;}
+  .hdr-right{align-items:center;}
+  .hdr-contact{text-align:center;}
+  .mbar-in{grid-template-columns:repeat(3,1fr);}
+  .sgrid{grid-template-columns:1fr;}
+  .dgrid{grid-template-columns:1fr;}
+  .hero h1{font-size:28px;}
+  .av{margin:0 auto;}
+}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-inner">
-    <div class="avatar-initials">TT</div>
-    <div class="hero-text">
+<div class="hdr">
+  <div class="hdr-in">
+    <div class="av">TT</div>
+    <div class="hero">
       <h1>Travis Tingey, MBA</h1>
-      <div class="subtitle">Finance Director &nbsp;·&nbsp; FP&A &nbsp;·&nbsp; Corporate Strategy &nbsp;·&nbsp; Board Advisory</div>
-      <div class="tagline">Finance executive driving EBITDA, strategic decision making, and investor trust across CPG, banking, and public markets.</div>
+      <div class="sub">Finance Director &nbsp;·&nbsp; FP&A &nbsp;·&nbsp; Corporate Strategy &nbsp;·&nbsp; Board Advisory</div>
+      <div class="tag">Finance executive driving EBITDA, strategic decision making, and investor trust across CPG, banking, and public markets.</div>
     </div>
-    <div class="hero-right">
-      <a href="https://www.linkedin.com/in/travis-tingey-mba-2569a070/" target="_blank" class="linkedin-btn">
-        <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <div class="hdr-right">
+      <a href="https://www.linkedin.com/in/travis-tingey-mba-2569a070/" target="_blank" class="li-btn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         Connect on LinkedIn
       </a>
-      <div class="hero-contact">
-        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85d1f7e4f3ecf6eff1bcb4c5e2e8e4ece9abe6eae8">[email&#160;protected]</a><br>
-        509-440-9458 &nbsp;·&nbsp; Lehi, UT
-      </div>
+      <div class="hdr-contact">Travisjt91@gmail.com<br>509-440-9458 &nbsp;·&nbsp; Lehi, UT</div>
     </div>
   </div>
 </div>
 
-<!-- METRICS BAR -->
-<div class="metrics-bar">
-  <div class="metrics-inner">
-    <div class="metric-item">
-      <div class="metric-val">$9M</div>
-      <div class="metric-lbl">Tariff Exposure Cut</div>
-    </div>
-    <div class="metric-item">
-      <div class="metric-val">$100M</div>
-      <div class="metric-lbl">Deal Size Managed</div>
-    </div>
-    <div class="metric-item">
-      <div class="metric-val">1,000+</div>
-      <div class="metric-lbl">Employees Planned</div>
-    </div>
-    <div class="metric-item">
-      <div class="metric-val">14</div>
-      <div class="metric-lbl">Countries Modeled</div>
-    </div>
-    <div class="metric-item">
-      <div class="metric-val">0.1%</div>
-      <div class="metric-lbl">SG&A Variance</div>
-    </div>
-    <div class="metric-item">
-      <div class="metric-val">150%</div>
-      <div class="metric-lbl">Revenue Growth</div>
-    </div>
+<div class="mbar">
+  <div class="mbar-in">
+    <div class="mi"><div class="mv">$9M</div><div class="ml">Tariff Exposure Cut</div></div>
+    <div class="mi"><div class="mv">$100M</div><div class="ml">Deal Size Managed</div></div>
+    <div class="mi"><div class="mv">1,000+</div><div class="ml">Employees Planned</div></div>
+    <div class="mi"><div class="mv">14</div><div class="ml">Countries Modeled</div></div>
+    <div class="mi"><div class="mv">0.1%</div><div class="ml">SG&amp;A Variance</div></div>
+    <div class="mi"><div class="mv">150%</div><div class="ml">Revenue Growth</div></div>
   </div>
 </div>
 
-<!-- NAV -->
-<div class="nav-wrap">
-  <div class="nav-inner">
-    <button class="nav-tab active" onclick="showSection('overview', this)">Overview</button>
-    <button class="nav-tab" onclick="showSection('experience', this)">Experience</button>
-    <button class="nav-tab" onclick="showSection('skills', this)">Skills</button>
-    <button class="nav-tab" onclick="showSection('education', this)">Education</button>
-    <button class="nav-tab" onclick="showSection('ask', this)">Ask Travis</button>
-    <button class="nav-tab" onclick="showSection('modeling', this)">Financial Modeling</button>
-    <button class="nav-tab" onclick="showSection('casestudy', this)">Case Study</button>
+<div class="nav">
+  <div class="nav-in">
+    <button class="nt" onclick="showTab('overview',this)">Overview</button>
+    <button class="nt" onclick="showTab('experience',this)">Experience</button>
+    <button class="nt" onclick="showTab('skills',this)">Skills</button>
+    <button class="nt" onclick="showTab('education',this)">Education</button>
+    <button class="nt" onclick="showTab('ask',this)">Ask Travis</button>
+    <button class="nt" onclick="showTab('modeling',this)">Financial Modeling</button>
+    <button class="nt" onclick="showTab('casestudy',this)">Case Study</button>
   </div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
-  <!-- OVERVIEW -->
-  <div id="overview" class="section visible">
-    <div class="section-label">Professional summary</div>
-    <div class="tool-card" style="border-left: 4px solid var(--blue);">
-      <p style="font-size:14px; color:var(--gray-600); line-height:1.8;">
-        Finance executive with 10+ years of progressive FP&A and corporate finance leadership across CPG, banking, and public markets. Built and led financial planning functions at Goldman Sachs, Zions Bancorporation, and LifeVantage. Currently Finance Manager at Pura Scents — owning board reporting, investor relations, and supply chain finance strategy. MBA from Penn State Smeal College of Business with emphasis in financial engineering.
-      </p>
+  <div id="overview" class="sec">
+    <div class="slbl">Professional summary</div>
+    <div class="card" style="border-left:4px solid var(--blue);">
+      <p style="font-size:14px;color:var(--g600);line-height:1.8;">Finance executive with 10+ years of progressive FP&amp;A and corporate finance leadership across CPG, banking, and public markets. Built and led financial planning functions at Goldman Sachs, Zions Bancorporation, and LifeVantage. Currently Finance Manager at Pura Scents — owning board reporting, investor relations, and supply chain finance strategy. MBA from Penn State Smeal College of Business with emphasis in financial engineering.</p>
     </div>
-
-    <div class="section-label" style="margin-top:1.5rem;">Career arc</div>
-    <div style="display:flex; flex-direction:column; gap:0; position:relative; padding-left:1.5rem; border-left:2px solid var(--gray-200); margin-left:0.5rem;">
-      <div style="position:relative; padding-bottom:1.5rem;">
-        <div style="position:absolute; left:-1.75rem; top:4px; width:10px; height:10px; border-radius:50%; background:var(--blue-dark); border:2px solid var(--white); box-shadow:0 0 0 2px var(--blue);"></div>
-        <div style="font-size:13px; font-weight:500; color:var(--black);">Finance Manager — Pura Scents</div>
-        <div style="font-size:12px; color:var(--gray-400); margin-top:2px;">2024 – Present &nbsp;·&nbsp; CPG / Supply Chain Finance</div>
+    <div class="slbl" style="margin-top:1.5rem;">Career arc</div>
+    <div class="tline">
+      <div class="titem">
+        <div class="tdot" style="background:var(--blue-dark);border:2px solid var(--white);box-shadow:0 0 0 2px var(--blue);"></div>
+        <div class="ti-ttl">Finance Manager — Pura Scents</div>
+        <div class="ti-sub">2024 – Present &nbsp;·&nbsp; CPG / Supply Chain Finance</div>
       </div>
-      <div style="position:relative; padding-bottom:1.5rem;">
-        <div style="position:absolute; left:-1.75rem; top:4px; width:10px; height:10px; border-radius:50%; background:var(--blue); border:2px solid var(--white); box-shadow:0 0 0 2px var(--blue-mid);"></div>
-        <div style="font-size:13px; font-weight:500; color:var(--black);">Business Unit Manager — Goldman Sachs (NYSE: GS)</div>
-        <div style="font-size:12px; color:var(--gray-400); margin-top:2px;">2023–2024 &nbsp;·&nbsp; Global Banking & Markets Audit</div>
+      <div class="titem">
+        <div class="tdot" style="background:var(--blue);border:2px solid var(--white);box-shadow:0 0 0 2px var(--blue-mid);"></div>
+        <div class="ti-ttl">Business Unit Manager — Goldman Sachs (NYSE: GS)</div>
+        <div class="ti-sub">2023–2024 &nbsp;·&nbsp; Global Banking &amp; Markets Audit</div>
       </div>
-      <div style="position:relative; padding-bottom:1.5rem;">
-        <div style="position:absolute; left:-1.75rem; top:4px; width:10px; height:10px; border-radius:50%; background:var(--gray-400); border:2px solid var(--white);"></div>
-        <div style="font-size:13px; font-weight:500; color:var(--black);">AVP, CFO Support — Zions Bancorporation (NASDAQ: ZION)</div>
-        <div style="font-size:12px; color:var(--gray-400); margin-top:2px;">2019–2023 &nbsp;·&nbsp; Multi-entity FP&A leadership</div>
+      <div class="titem">
+        <div class="tdot" style="background:var(--g400);border:2px solid var(--white);"></div>
+        <div class="ti-ttl">AVP, CFO Support — Zions Bancorporation (NASDAQ: ZION)</div>
+        <div class="ti-sub">2019–2023 &nbsp;·&nbsp; Multi-entity FP&amp;A leadership</div>
       </div>
-      <div style="position:relative;">
-        <div style="position:absolute; left:-1.75rem; top:4px; width:10px; height:10px; border-radius:50%; background:var(--gray-200); border:2px solid var(--white);"></div>
-        <div style="font-size:13px; font-weight:500; color:var(--black);">Financial Analyst II — LifeVantage (NASDAQ: LFVN)</div>
-        <div style="font-size:12px; color:var(--gray-400); margin-top:2px;">2017–2019 &nbsp;·&nbsp; $180M global P&L across 14 countries</div>
+      <div class="titem">
+        <div class="tdot" style="background:var(--g200);border:2px solid var(--white);"></div>
+        <div class="ti-ttl">Financial Analyst II — LifeVantage (NASDAQ: LFVN)</div>
+        <div class="ti-sub">2017–2019 &nbsp;·&nbsp; $180M global P&amp;L across 14 countries</div>
       </div>
     </div>
   </div>
 
-  <!-- EXPERIENCE -->
-  <div id="experience" class="section">
-    <div class="section-label">Work history</div>
-
-    <div class="exp-card">
-      <div class="exp-top">
-        <div class="exp-logo">PS</div>
-        <div class="exp-title-block">
-          <div class="exp-role">Finance Manager</div>
-          <div class="exp-company">Pura Scents LLC &nbsp;·&nbsp; Lehi, UT</div>
-        </div>
-        <div class="exp-meta">
-          <span class="badge badge-green">Current Role</span>
-          <div class="exp-date">2024 – Present</div>
-        </div>
+  <div id="experience" class="sec">
+    <div class="slbl">Work history</div>
+    <div class="card">
+      <div class="etop">
+        <div class="elogo">PS</div>
+        <div class="etb"><div class="er">Finance Manager</div><div class="ec">Pura Scents LLC &nbsp;·&nbsp; Lehi, UT</div></div>
+        <div class="emeta"><span class="badge b-green">Current Role</span><div class="edate">2024 – Present</div></div>
       </div>
-      <ul class="exp-bullets">
+      <ul class="ebul">
         <li>Reduced ~$9M in tariff exposure through freight optimization and supply chain finance initiatives</li>
         <li>Own board reporting and financial storytelling across revenue, margins, and EBITDA performance</li>
         <li>Design investor relations metrics packages and create investor-facing three-statement financial models</li>
         <li>Managed relationships with bankers during equity and capitalization table transitions</li>
-        <li>Lead FP&A including budgeting, forecasting, variance analysis, and long-range planning for Operations</li>
+        <li>Lead FP&amp;A including budgeting, forecasting, variance analysis, and long-range planning for Operations</li>
         <li>Partner with executives on operational decision-making and contracts between $10M–$200M</li>
       </ul>
     </div>
-
-    <div class="exp-card">
-      <div class="exp-top">
-        <div class="exp-logo">GS</div>
-        <div class="exp-title-block">
-          <div class="exp-role">Business Unit Manager</div>
-          <div class="exp-company">Goldman Sachs (NYSE: GS) &nbsp;·&nbsp; SLC, UT</div>
-        </div>
-        <div class="exp-meta">
-          <span class="badge badge-blue">Banking</span>
-          <div class="exp-date">2023 – 2024</div>
-        </div>
+    <div class="card">
+      <div class="etop">
+        <div class="elogo">GS</div>
+        <div class="etb"><div class="er">Business Unit Manager</div><div class="ec">Goldman Sachs (NYSE: GS) &nbsp;·&nbsp; SLC, UT</div></div>
+        <div class="emeta"><span class="badge b-blue">Banking</span><div class="edate">2023 – 2024</div></div>
       </div>
-      <ul class="exp-bullets">
+      <ul class="ebul">
         <li>Managed internal audit operations for the Global Banking and Markets (GBM) division</li>
         <li>Created board-level financial reporting for the Internal Audit division, including regulatory risk sizing</li>
         <li>Reported delayed and at-risk audit remediation plans to the GS executive office</li>
         <li>Managed communication with managing directors and partners across all GBM audits</li>
       </ul>
     </div>
-
-    <div class="exp-card">
-      <div class="exp-top">
-        <div class="exp-logo">ZB</div>
-        <div class="exp-title-block">
-          <div class="exp-role">Assistant Vice President, CFO Support</div>
-          <div class="exp-company">Zions Bancorporation (NASDAQ: ZION) &nbsp;·&nbsp; SLC, UT</div>
-        </div>
-        <div class="exp-meta">
-          <span class="badge badge-blue">Banking</span>
-          <div class="exp-date">2019 – 2023</div>
-        </div>
+    <div class="card">
+      <div class="etop">
+        <div class="elogo">ZB</div>
+        <div class="etb"><div class="er">Assistant Vice President, CFO Support</div><div class="ec">Zions Bancorporation (NASDAQ: ZION) &nbsp;·&nbsp; SLC, UT</div></div>
+        <div class="emeta"><span class="badge b-blue">Banking</span><div class="edate">2019 – 2023</div></div>
       </div>
-      <ul class="exp-bullets">
-        <li>Led FP&A for multi-entity operations including budgeting, forecasting, and financial reporting</li>
+      <ul class="ebul">
+        <li>Led FP&amp;A for multi-entity operations including budgeting, forecasting, and financial reporting</li>
         <li>Managed workforce planning and expense base for 1,000+ employees</li>
         <li>Prepared annual and quarterly board presentations on performance, budget, and forecast changes</li>
         <li>Protected capital position by driving multi-million dollar cost reduction and efficiency initiatives</li>
@@ -895,126 +243,52 @@
         <li>Performed cash flow reporting for a complex Superfund campus construction project</li>
       </ul>
     </div>
-
-    <div class="exp-card">
-      <div class="exp-top">
-        <div class="exp-logo">LV</div>
-        <div class="exp-title-block">
-          <div class="exp-role">Financial Analyst II</div>
-          <div class="exp-company">LifeVantage (NASDAQ: LFVN) &nbsp;·&nbsp; Sandy, UT</div>
-        </div>
-        <div class="exp-meta">
-          <span class="badge badge-amber">Public Co.</span>
-          <div class="exp-date">2017 – 2019</div>
-        </div>
+    <div class="card">
+      <div class="etop">
+        <div class="elogo">LV</div>
+        <div class="etb"><div class="er">Financial Analyst II</div><div class="ec">LifeVantage (NASDAQ: LFVN) &nbsp;·&nbsp; Sandy, UT</div></div>
+        <div class="emeta"><span class="badge b-amber">Public Co.</span><div class="edate">2017 – 2019</div></div>
       </div>
-      <ul class="exp-bullets">
-        <li>Modeled $180M P&L across 14 countries and 50 internal departments for annual budgets and quarterly forecasts</li>
+      <ul class="ebul">
+        <li>Modeled $180M P&amp;L across 14 countries and 50 internal departments for annual budgets and quarterly forecasts</li>
         <li>Grew revenue 10% by consulting with senior sales team on analysis of new business contracts</li>
         <li>Automated income statement reporting allowing daily real-time actuals analysis by country and GL</li>
-        <li>Achieved 0.1% SG&A budget variance through effective financial and budgeting leadership</li>
+        <li>Achieved 0.1% SG&amp;A budget variance through effective financial and budgeting leadership</li>
       </ul>
     </div>
   </div>
 
-  <!-- SKILLS -->
-  <div id="skills" class="section">
-    <div class="section-label">Core competencies</div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-title">FP&A & Planning</div>
-        <div class="tags">
-          <span class="tag">Budgeting & Forecasting</span>
-          <span class="tag">Variance Analysis</span>
-          <span class="tag">Long-range Planning</span>
-          <span class="tag">Cash Flow Management</span>
-          <span class="tag">KPI Development</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Strategic Finance</div>
-        <div class="tags">
-          <span class="tag">EBITDA Optimization</span>
-          <span class="tag">Capital Allocation</span>
-          <span class="tag">Cost Reduction</span>
-          <span class="tag">Pricing Strategy</span>
-          <span class="tag">Supply Chain Finance</span>
-          <span class="tag">SaaS / CPG Finance</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Reporting & Investor Relations</div>
-        <div class="tags">
-          <span class="tag">Board Reporting</span>
-          <span class="tag">Investor Relations</span>
-          <span class="tag">Financial Modeling</span>
-          <span class="tag">3-Statement Models</span>
-          <span class="tag">Regulatory Risk Sizing</span>
-          <span class="tag">Operational Finance</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Tools & Technology</div>
-        <div class="tags">
-          <span class="tag">Advanced Excel</span>
-          <span class="tag">Hyperion</span>
-          <span class="tag">Oracle</span>
-          <span class="tag">Tableau</span>
-          <span class="tag">Vena</span>
-          <span class="tag">NetSuite</span>
-          <span class="tag">Microsoft Office</span>
-        </div>
-      </div>
+  <div id="skills" class="sec">
+    <div class="slbl">Core competencies</div>
+    <div class="sgrid">
+      <div class="scard"><div class="sct">FP&amp;A &amp; Planning</div><div class="tags"><span class="tag">Budgeting &amp; Forecasting</span><span class="tag">Variance Analysis</span><span class="tag">Long-range Planning</span><span class="tag">Cash Flow Management</span><span class="tag">KPI Development</span></div></div>
+      <div class="scard"><div class="sct">Strategic Finance</div><div class="tags"><span class="tag">EBITDA Optimization</span><span class="tag">Capital Allocation</span><span class="tag">Cost Reduction</span><span class="tag">Pricing Strategy</span><span class="tag">Supply Chain Finance</span><span class="tag">SaaS / CPG Finance</span></div></div>
+      <div class="scard"><div class="sct">Reporting &amp; Investor Relations</div><div class="tags"><span class="tag">Board Reporting</span><span class="tag">Investor Relations</span><span class="tag">Financial Modeling</span><span class="tag">3-Statement Models</span><span class="tag">Regulatory Risk Sizing</span><span class="tag">Operational Finance</span></div></div>
+      <div class="scard"><div class="sct">Tools &amp; Technology</div><div class="tags"><span class="tag">Advanced Excel</span><span class="tag">Hyperion</span><span class="tag">Oracle</span><span class="tag">Tableau</span><span class="tag">Vena</span><span class="tag">NetSuite</span><span class="tag">Microsoft Office</span></div></div>
     </div>
   </div>
 
-  <!-- EDUCATION -->
-  <div id="education" class="section">
-    <div class="section-label">Academic background</div>
-    <div class="edu-card">
-      <div class="edu-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3ZM5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="rgba(255,255,255,0.8)"/>
-        </svg>
-      </div>
-      <div>
-        <div class="edu-school">Penn State University – Smeal College of Business</div>
-        <div class="edu-degree">
-          Masters of Business Administration · <strong>With Honors</strong><br>
-          <span style="color:var(--gray-400); font-size:12px;">Emphasis in Financial Engineering &nbsp;·&nbsp; 2021–2025</span>
-        </div>
-      </div>
+  <div id="education" class="sec">
+    <div class="slbl">Academic background</div>
+    <div class="edu">
+      <div class="edu-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3ZM5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="rgba(255,255,255,0.8)"/></svg></div>
+      <div><div class="edu-s">Penn State University – Smeal College of Business</div><div class="edu-d">Masters of Business Administration · <strong>With Honors</strong><br><span style="color:var(--g400);font-size:12px;">Emphasis in Financial Engineering &nbsp;·&nbsp; 2021–2025</span></div></div>
     </div>
-    <div class="edu-card">
-      <div class="edu-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3ZM5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="rgba(255,255,255,0.8)"/>
-        </svg>
-      </div>
-      <div>
-        <div class="edu-school">Brigham Young University – Idaho</div>
-        <div class="edu-degree">
-          B.S. Business Management · Corporate Finance<br>
-          <span style="color:var(--gray-400); font-size:12px;">Minor in Corporate Law &nbsp;·&nbsp; 2009–2010, 2012–2016</span>
-        </div>
-      </div>
+    <div class="edu">
+      <div class="edu-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3ZM5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="rgba(255,255,255,0.8)"/></svg></div>
+      <div><div class="edu-s">Brigham Young University – Idaho</div><div class="edu-d">B.S. Business Management · Corporate Finance<br><span style="color:var(--g400);font-size:12px;">Minor in Corporate Law &nbsp;·&nbsp; 2009–2010, 2012–2016</span></div></div>
     </div>
   </div>
 
-  <!-- ASK TRAVIS -->
-  <div id="ask" class="section">
-    <div class="chat-wrap">
-      <div class="chat-header">
-        <div class="chat-avatar">TT</div>
-        <div class="chat-header-info">
-          <h3>Travis Tingey</h3>
-          <p>Finance Director · AI-powered Q&A</p>
-        </div>
-        <div class="chat-status"></div>
+  <div id="ask" class="sec">
+    <div class="chat">
+      <div class="chat-hdr">
+        <div class="chat-av">TT</div>
+        <div><h3>Travis Tingey</h3><p>Finance Director · AI-powered Q&amp;A</p></div>
+        <div class="dot"></div>
       </div>
-
-      <div class="recruiter-chips">
-        <div class="chip-label">Recruiter questions</div>
+      <div class="chips">
+        <div class="clbl">Recruiter questions</div>
         <button class="chip" onclick="askQ('What makes you stand out as a finance leader?')">What makes you stand out?</button>
         <button class="chip" onclick="askQ('Walk me through your biggest financial impact.')">Biggest financial impact?</button>
         <button class="chip" onclick="askQ('How do you approach board reporting and storytelling?')">Board reporting approach?</button>
@@ -1025,155 +299,108 @@
         <button class="chip" onclick="askQ('What is your approach to cost reduction without hurting growth?')">Cost reduction strategy?</button>
         <button class="chip" onclick="askQ('How do you partner with non-finance executives?')">Cross-functional partnership?</button>
         <button class="chip" onclick="askQ('What type of company or role are you targeting next?')">Ideal next role?</button>
-        <div style="width:100%; margin-top:8px; padding-top:8px; border-top:1px solid var(--gray-200);">
-          <div class="chip-label" style="margin-bottom:6px;">Resume</div>
-          <button class="chip" onclick="downloadResume()" style="background:var(--blue-dark);color:var(--white);border-color:var(--blue-dark);">&#8681; Download PDF Resume</button>
+        <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--g200);">
+          <div class="clbl" style="margin-bottom:6px;">Resume</div>
+          <button class="chip chip-dl" onclick="dlResume()">&#8681; Download PDF Resume</button>
         </div>
       </div>
-
-      <div class="chat-messages" id="chat-messages">
-        <div class="bubble bubble-travis">
-          Bottom line up front: I'm a finance leader who builds planning systems, drives EBITDA, and translates financial complexity into decisions for boards and investors. Ask me anything.
-        </div>
+      <div class="msgs" id="chat-msgs">
+        <div class="bub b-travis">Bottom line up front: I'm a finance leader who builds planning systems, drives EBITDA, and translates financial complexity into decisions for boards and investors. Ask me anything.</div>
       </div>
-
-      <div class="chat-input-row">
-        <input type="text" class="chat-input" id="chat-input" placeholder="Ask a question..." onkeydown="if(event.key==='Enter') sendMsg()" />
-        <button class="chat-send" onclick="sendMsg()">Send</button>
+      <div class="inp-row">
+        <input type="text" class="cinp" id="cinp" placeholder="Ask a question..." onkeydown="if(event.key==='Enter')sendMsg()"/>
+        <button class="csend" onclick="sendMsg()">Send</button>
       </div>
     </div>
   </div>
 
-  <!-- FINANCIAL MODELING -->
-  <div id="modeling" class="section">
-    <div class="section-label">Financial modeling — driver analysis</div>
-    <div class="tool-card">
-      <div class="tool-card-title">Explain Model Changes to the Executive Team</div>
-      <div class="tool-desc">Enter the driver changes you made to the model. Travis will explain what changed in EBITDA, revenue, and cash flow — and what it implies for the business.</div>
-
-      <div class="driver-grid">
-        <div class="driver-row">
-          <label class="driver-label">Price Change (%)</label>
-          <input type="text" class="driver-input" id="d-price" placeholder="e.g. +5%" />
-        </div>
-        <div class="driver-row">
-          <label class="driver-label">Volume Change (%)</label>
-          <input type="text" class="driver-input" id="d-volume" placeholder="e.g. -3%" />
-        </div>
-        <div class="driver-row">
-          <label class="driver-label">COGS Change (%)</label>
-          <input type="text" class="driver-input" id="d-cogs" placeholder="e.g. +2%" />
-        </div>
-        <div class="driver-row">
-          <label class="driver-label">OpEx / SG&A Change</label>
-          <input type="text" class="driver-input" id="d-opex" placeholder="e.g. flat, +$500K" />
-        </div>
-        <div class="driver-row" style="grid-column:1/-1;">
-          <label class="driver-label">Additional context (optional)</label>
-          <input type="text" class="driver-input" id="d-context" placeholder="e.g. tariff increase, new product launch, FX headwind" />
-        </div>
+  <div id="modeling" class="sec">
+    <div class="slbl">Financial modeling — driver analysis</div>
+    <div class="tcrd">
+      <div class="tttl">Explain Model Changes to the Executive Team</div>
+      <div class="tdesc">Enter the driver changes you made to the model. Travis will explain what changed in EBITDA, revenue, and cash flow — and what it implies for the business.</div>
+      <div class="dgrid">
+        <div class="drow"><label class="dlbl">Price Change (%)</label><input type="text" class="dinp" id="d-price" placeholder="e.g. +5%"/></div>
+        <div class="drow"><label class="dlbl">Volume Change (%)</label><input type="text" class="dinp" id="d-volume" placeholder="e.g. -3%"/></div>
+        <div class="drow"><label class="dlbl">COGS Change (%)</label><input type="text" class="dinp" id="d-cogs" placeholder="e.g. +2%"/></div>
+        <div class="drow"><label class="dlbl">OpEx / SG&amp;A Change</label><input type="text" class="dinp" id="d-opex" placeholder="e.g. flat, +$500K"/></div>
+        <div class="drow" style="grid-column:1/-1;"><label class="dlbl">Additional context (optional)</label><input type="text" class="dinp" id="d-ctx" placeholder="e.g. tariff increase, new product launch, FX headwind"/></div>
       </div>
-
-      <button class="tool-btn" id="model-btn" onclick="runModeling()">Explain the Model Impact ↗</button>
-      <div class="tool-output" id="model-output"></div>
+      <button class="tbtn" id="mbtn" onclick="runModel()">Explain the Model Impact ↗</button>
+      <div class="tout" id="mout"></div>
     </div>
   </div>
 
-  <!-- CASE STUDY -->
-  <div id="casestudy" class="section">
-    <div class="section-label">Interview case study</div>
-    <div class="tool-card">
-      <div class="tool-card-title">Director of Finance — Case Interview</div>
-      <div class="tool-desc">Pick a scenario below or write your own. Travis will respond as he would in a real Director of Finance interview — structured, practical, and decisive.</div>
-
-      <div class="case-examples">
-        <div style="font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:1.5px; color:var(--gray-400); width:100%; margin-bottom:2px;">Example scenarios</div>
-        <button class="case-chip" onclick="loadCase('Costs are rising faster than revenue. What do you do?')">Costs rising faster than revenue</button>
-        <button class="case-chip" onclick="loadCase('You missed forecast by 10%. How do you respond to the executive team?')">Missed forecast by 10%</button>
-        <button class="case-chip" onclick="loadCase('Tariffs just increased significantly on your key imported goods. What actions do you take?')">Tariffs just increased</button>
-        <button class="case-chip" onclick="loadCase('The board is asking for a 15% cost reduction plan in 90 days. How do you approach this?')">Board wants 15% cost cut in 90 days</button>
-        <button class="case-chip" onclick="loadCase('Revenue is growing but cash flow is negative. What is your diagnosis and plan?')">Revenue up but cash flow negative</button>
-        <button class="case-chip" onclick="loadCase('The CEO wants to enter a new market. How do you evaluate the financial case?')">Evaluating a new market entry</button>
+  <div id="casestudy" class="sec">
+    <div class="slbl">Interview case study</div>
+    <div class="tcrd">
+      <div class="tttl">Director of Finance — Case Interview</div>
+      <div class="tdesc">Pick a scenario below or write your own. Travis will respond as he would in a real Director of Finance interview — structured, practical, and decisive.</div>
+      <div class="cchips">
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--g400);width:100%;margin-bottom:2px;">Example scenarios</div>
+        <button class="cchip" onclick="loadCase('Costs are rising faster than revenue. What do you do?')">Costs rising faster than revenue</button>
+        <button class="cchip" onclick="loadCase('You missed forecast by 10%. How do you respond to the executive team?')">Missed forecast by 10%</button>
+        <button class="cchip" onclick="loadCase('Tariffs just increased significantly on your key imported goods. What actions do you take?')">Tariffs just increased</button>
+        <button class="cchip" onclick="loadCase('The board is asking for a 15% cost reduction plan in 90 days. How do you approach this?')">Board wants 15% cost cut in 90 days</button>
+        <button class="cchip" onclick="loadCase('Revenue is growing but cash flow is negative. What is your diagnosis and plan?')">Revenue up but cash flow negative</button>
+        <button class="cchip" onclick="loadCase('The CEO wants to enter a new market. How do you evaluate the financial case?')">Evaluating a new market entry</button>
       </div>
-
-      <textarea class="driver-input" id="case-input" placeholder="Or type your own case prompt here..."></textarea>
-      <button class="tool-btn" id="case-btn" onclick="runCase()">Respond to Case ↗</button>
-      <div class="tool-output" id="case-output"></div>
+      <textarea class="dinp" id="case-inp" placeholder="Or type your own case prompt here..."></textarea>
+      <button class="tbtn" id="cbtn" onclick="runCase()">Respond to Case ↗</button>
+      <div class="tout" id="cout"></div>
     </div>
   </div>
 
-</div><!-- /main -->
+</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const SYSTEM_PROMPT = `You are Travis Tingey, a Director-level finance leader. Background: Finance Manager at Pura Scents (CPG/supply chain finance, $9M tariff reduction, board reporting, investor relations, three-statement models, $10M-$200M contracts). Former Goldman Sachs Business Unit Manager (GBM internal audit, board-level regulatory risk reporting, executive office communication). Former AVP CFO Support at Zions Bancorporation (multi-entity FP&A, 1,000+ employee workforce planning, board presentations, $multi-million cost reduction, developed 4 junior analysts). Former Financial Analyst II at LifeVantage ($180M P&L, 14 countries, 10% revenue growth, 0.1% SG&A variance, income statement automation). MBA from Penn State Smeal with honors, emphasis in financial engineering. BS Business Management, Corporate Finance, BYU-Idaho, Minor Corporate Law.
+<script>
+var SYS = "You are Travis Tingey, a Director-level finance leader. Background: Finance Manager at Pura Scents (CPG/supply chain finance, $9M tariff reduction, board reporting, investor relations, three-statement models, $10M-$200M contracts). Former Goldman Sachs Business Unit Manager (GBM internal audit, board-level regulatory risk reporting, executive office communication). Former AVP CFO Support at Zions Bancorporation (multi-entity FP&A, 1,000+ employee workforce planning, board presentations, multi-million dollar cost reduction, developed 4 junior analysts). Former Financial Analyst II at LifeVantage ($180M P&L, 14 countries, 10% revenue growth, 0.1% SG&A variance, income statement automation). MBA Penn State Smeal with honors, emphasis financial engineering. Ideal next role: open to earlier-stage companies ($15M-$300M revenue) with strong leadership and culture — wants to build something from the ground up, not maintain a bureaucratic system, not looking to return to large banks. Communication style: top-down, executive-level, numbers-focused, decisive, no fluff. Always tie back to Revenue, EBITDA, Cash Flow, Risk. Do NOT say you are an AI.";
 
-Ideal next role context: Travis is open to earlier-stage companies with the right leadership group. He wants to get into a less complex environment where he can build something from the ground up — not just maintain a system someone else built. He's targeting companies in the $15M–$300M revenue range. He values strong leadership and culture over brand name. He is not looking for another large bank or bureaucratic environment.
-
-Your communication style: top-down (answer first, then drivers, then recommendation), executive-level, numbers-focused, decisive, no fluff. Always tie back to Revenue, EBITDA, Cash Flow, and Risk. Use frameworks and tradeoffs. Be concise but insightful. Do NOT say you are an AI.`;
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('visible'); });
-  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
-  var first = document.getElementById('overview');
-  if (first) first.classList.add('visible');
-  var firstTab = document.querySelector('.nav-tab');
-  if (firstTab) firstTab.classList.add('active');
-});
-
-function getApiKey() {
-  return localStorage.getItem('tt_api_key') || '';
-}
-
-async function callClaude(userMessage, systemOverride) {
-  let apiKey = getApiKey();
-  if (!apiKey) {
-    const key = prompt('Paste your Anthropic API key to enable Ask Travis (saved locally in your browser only):');
-    if (!key) throw new Error('No API key provided.');
-    localStorage.setItem('tt_api_key', key.trim());
-    apiKey = key.trim();
-  }
-  const sys = systemOverride || SYSTEM_PROMPT;
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
-      system: sys,
-      messages: [{ role: 'user', content: userMessage }]
-    })
-  });
-  const data = await resp.json();
-  if (data.error) throw new Error(data.error.message);
-  return data.content.map(b => b.text || '').join('');
-}
-
-function downloadResume() {
-  const link = document.createElement('a');
-  link.href = 'Travis_Tingey_Resume.pdf';
-  link.download = 'Travis_Tingey_Resume.pdf';
-  link.click();
-}
-
-function showSection(id, btn) {
-  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('visible'); });
-  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.getElementById(id).classList.add('visible');
+function showTab(id, btn) {
+  var secs = document.querySelectorAll('.sec');
+  var tabs = document.querySelectorAll('.nt');
+  for (var i = 0; i < secs.length; i++) secs[i].classList.remove('on');
+  for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+  var el = document.getElementById(id);
+  if (el) el.classList.add('on');
   if (btn) btn.classList.add('active');
 }
 
-// ASK TRAVIS
-const msgHistory = [];
+window.onload = function() {
+  showTab('overview', document.querySelector('.nt'));
+};
 
-function appendBubble(text, type) {
-  const box = document.getElementById('chat-messages');
-  const div = document.createElement('div');
-  div.className = 'bubble bubble-' + type;
+function getKey() {
+  try { return localStorage.getItem('tt_k') || ''; } catch(e) { return ''; }
+}
+
+async function callClaude(msg, sys) {
+  var k = getKey();
+  if (!k) {
+    var input = prompt('Paste your Anthropic API key to enable Ask Travis (saved locally in your browser only):');
+    if (!input) throw new Error('No API key.');
+    try { localStorage.setItem('tt_k', input.trim()); } catch(e) {}
+    k = input.trim();
+  }
+  var r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': k,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: sys || SYS, messages: [{ role: 'user', content: msg }] })
+  });
+  var d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d.content.map(function(b) { return b.text || ''; }).join('');
+}
+
+function addBubble(text, cls) {
+  var box = document.getElementById('chat-msgs');
+  var div = document.createElement('div');
+  div.className = 'bub ' + cls;
   div.textContent = text;
   box.appendChild(div);
   box.scrollTop = box.scrollHeight;
@@ -1181,98 +408,64 @@ function appendBubble(text, type) {
 }
 
 async function sendMsg() {
-  const inp = document.getElementById('chat-input');
-  const q = inp.value.trim();
+  var inp = document.getElementById('cinp');
+  var q = inp.value.trim();
   if (!q) return;
   inp.value = '';
   inp.disabled = true;
-  appendBubble(q, 'user');
-  const loading = appendBubble('Thinking...', 'loading');
+  addBubble(q, 'b-user');
+  var loading = addBubble('Thinking...', 'b-load');
   try {
-    const answer = await callClaude(q);
+    var ans = await callClaude(q);
     loading.remove();
-    appendBubble(answer, 'travis');
+    addBubble(ans, 'b-travis');
   } catch(e) {
-    loading.textContent = 'Something went wrong. Please try again.';
+    loading.textContent = 'Something went wrong. Try again.';
   }
   inp.disabled = false;
   inp.focus();
 }
 
 function askQ(q) {
-  document.getElementById('chat-input').value = q;
+  document.getElementById('cinp').value = q;
   sendMsg();
 }
 
-// FINANCIAL MODELING
-async function runModeling() {
-  const price = document.getElementById('d-price').value || 'unchanged';
-  const volume = document.getElementById('d-volume').value || 'unchanged';
-  const cogs = document.getElementById('d-cogs').value || 'unchanged';
-  const opex = document.getElementById('d-opex').value || 'unchanged';
-  const context = document.getElementById('d-context').value || '';
-
-  const prompt = `You are explaining changes in a financial model to an executive team. The user adjusted the following drivers:
-- Price: ${price}
-- Volume: ${volume}
-- COGS: ${cogs}
-- OpEx/SG&A: ${opex}
-${context ? '- Additional context: ' + context : ''}
-
-Explain:
-1. What changed in the outputs (EBITDA, revenue, cash flow) — give directional impact
-2. Why those changes happened (driver logic)
-3. What this implies for the business
-4. What you would watch next
-
-Be concise and business-focused. Use numbers where logical. Avoid overly technical modeling language.`;
-
-  const btn = document.getElementById('model-btn');
-  const out = document.getElementById('model-output');
-  btn.disabled = true;
-  btn.textContent = 'Analyzing...';
-  out.classList.remove('visible');
-
-  try {
-    const result = await callClaude(prompt);
-    out.textContent = result;
-    out.classList.add('visible');
-  } catch(e) {
-    out.textContent = 'Error generating analysis. Please try again.';
-    out.classList.add('visible');
-  }
-  btn.disabled = false;
-  btn.textContent = 'Explain the Model Impact ↗';
+function dlResume() {
+  var a = document.createElement('a');
+  a.href = 'Travis_Tingey_Resume.pdf';
+  a.download = 'Travis_Tingey_Resume.pdf';
+  a.click();
 }
 
-// CASE STUDY
-function loadCase(text) {
-  document.getElementById('case-input').value = text;
+async function runModel() {
+  var price = document.getElementById('d-price').value || 'unchanged';
+  var vol = document.getElementById('d-volume').value || 'unchanged';
+  var cogs = document.getElementById('d-cogs').value || 'unchanged';
+  var opex = document.getElementById('d-opex').value || 'unchanged';
+  var ctx = document.getElementById('d-ctx').value || '';
+  var prompt = "You are explaining changes in a financial model to an executive team. Driver changes:\n- Price: " + price + "\n- Volume: " + vol + "\n- COGS: " + cogs + "\n- OpEx/SG&A: " + opex + (ctx ? "\n- Additional context: " + ctx : "") + "\n\nExplain: 1) What changed in outputs (EBITDA, revenue, cash flow) 2) Why those changes happened 3) What this implies for the business 4) What to watch next. Be concise and business-focused. Avoid overly technical language.";
+  var btn = document.getElementById('mbtn');
+  var out = document.getElementById('mout');
+  btn.disabled = true; btn.textContent = 'Analyzing...'; out.classList.remove('on');
+  try { var res = await callClaude(prompt); out.textContent = res; out.classList.add('on'); }
+  catch(e) { out.textContent = 'Error. Please try again.'; out.classList.add('on'); }
+  btn.disabled = false; btn.textContent = 'Explain the Model Impact ↗';
 }
+
+function loadCase(t) { document.getElementById('case-inp').value = t; }
 
 async function runCase() {
-  const casePrompt = document.getElementById('case-input').value.trim();
-  if (!casePrompt) return;
-
-  const prompt = `You are Travis Tingey responding to an interview case study for a Director of Finance role.
-
-Case: ${casePrompt}
-
-Respond in this structure:
-1. How I would approach the problem
-2. Key analyses I would run
-3. Actions I would take
-4. How I would communicate this to leadership
-
-Make this sound like a real, confident interview answer. Structured, practical, decisive. Not overly long. Tie back to EBITDA, cash flow, and risk where relevant.`;
-
-  const btn = document.getElementById('case-btn');
-  const out = document.getElementById('case-output');
-  btn.disabled = true;
-  btn.textContent = 'Preparing response...';
-  out.classList.remove('visible');
-
-  try {
-    const result = await callClaude(prompt);
-    out.textContent = result;
-    out.classList.add
+  var cp = document.getElementById('case-inp').value.trim();
+  if (!cp) return;
+  var prompt = "You are Travis Tingey responding to an interview case study for a Director of Finance role.\n\nCase: " + cp + "\n\nRespond in this structure:\n1. How I would approach the problem\n2. Key analyses I would run\n3. Actions I would take\n4. How I would communicate this to leadership\n\nConfident, structured, practical, decisive. Tie back to EBITDA, cash flow, and risk. Not overly long.";
+  var btn = document.getElementById('cbtn');
+  var out = document.getElementById('cout');
+  btn.disabled = true; btn.textContent = 'Preparing response...'; out.classList.remove('on');
+  try { var res = await callClaude(prompt); out.textContent = res; out.classList.add('on'); }
+  catch(e) { out.textContent = 'Error. Please try again.'; out.classList.add('on'); }
+  btn.disabled = false; btn.textContent = 'Respond to Case ↗';
+}
+</script>
+</body>
+</html>
