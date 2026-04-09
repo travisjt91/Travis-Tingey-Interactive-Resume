@@ -155,7 +155,7 @@ textarea.dinp{resize:vertical;min-height:80px;width:100%;margin-bottom:1rem;}
         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         Connect on LinkedIn
       </a>
-      <div class="hdr-contact">Travisjt91@gmail.com<br>509-440-9458 &nbsp;·&nbsp; Lehi, UT</div>
+      <div class="hdr-contact"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9fcbedfee9f6ecf5eba6aedff8f2fef6f3b1fcf0f2">[email&#160;protected]</a><br>509-440-9458 &nbsp;·&nbsp; Lehi, UT</div>
       <button class="dl-btn" onclick="dlResume()">&#8681; Download Resume</button>
     </div>
   </div>
@@ -378,7 +378,7 @@ textarea.dinp{resize:vertical;min-height:80px;width:100%;margin-bottom:1rem;}
 
 </div><!-- /main -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var SYS = "You are Travis Tingey, a Director-level finance leader. Background: Finance Manager at Pura Scents (CPG/supply chain finance, $9M tariff reduction, board reporting, investor relations, three-statement models, $10M-$200M contracts). Former Goldman Sachs Business Unit Manager (GBM internal audit, board-level regulatory risk reporting, executive office communication). Former AVP CFO Support at Zions Bancorporation (multi-entity FP&A, 1,000+ employee workforce planning, board presentations, multi-million dollar cost reduction, developed 4 junior analysts). Former Financial Analyst II at LifeVantage ($180M P&L, 14 countries, 10% revenue growth, 0.1% SG&A variance, income statement automation). MBA Penn State Smeal with honors, emphasis financial engineering. Ideal next role: open to earlier-stage companies ($15M-$300M revenue) with strong leadership and culture — wants to build something from the ground up, not maintain a bureaucratic system, not looking to return to large banks. Communication style: top-down, executive-level, numbers-focused, decisive, no fluff. Always tie back to Revenue, EBITDA, Cash Flow, Risk. Do NOT say you are an AI.";
 
 function showTab(id, btn) {
@@ -395,35 +395,22 @@ window.onload = function() {
   showTab('overview', document.querySelector('.nt'));
 };
 
-function getKey() {
-  try { return localStorage.getItem('tt_k') || ''; } catch(e) { return ''; }
-}
+// Proxy URL — update this after deploying your Cloudflare Worker
+var PROXY_URL = 'travis-resume-proxy.travisjt91.workers.dev';
 
 async function callClaude(msg, sys) {
-  var k = getKey();
-  if (!k) {
-    var input = prompt('Paste your Anthropic API key to enable Ask Travis (saved locally in your browser only):');
-    if (!input) { throw new Error('No API key.'); }
-    try { localStorage.setItem('tt_k', input.trim()); } catch(e) {}
-    k = input.trim();
-  }
-  var r = await fetch('https://api.anthropic.com/v1/messages', {
+  var r = await fetch(PROXY_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': k,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
+      max_tokens: 400,
       system: sys || SYS,
       messages: [{ role: 'user', content: msg }]
     })
   });
   var d = await r.json();
-  if (d.error) { throw new Error(d.error.message); }
+  if (d.error) { throw new Error(d.error); }
   return d.content.map(function(b) { return b.text || ''; }).join('');
 }
 
@@ -509,15 +496,4 @@ async function runCase() {
   out.classList.remove('on');
   try {
     var res = await callClaude(prompt);
-    out.textContent = res;
-    out.classList.add('on');
-  } catch(e) {
-    out.textContent = 'Error. Please try again.';
-    out.classList.add('on');
-  }
-  btn.disabled = false;
-  btn.textContent = 'Generate Case Response ↗';
-}
-</script>
-</body>
-</html>
+    out.textContent = res
