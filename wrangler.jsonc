@@ -1,5 +1,11 @@
 {
   "name": "travis-resume-proxy",
   "main": "worker.js",
-  "compatibility_date": "2025-01-01"
+  "compatibility_date": "2025-01-01",
+  "kv_namespaces": [
+    {
+      "binding": "RATE_LIMIT_KV",
+      "id": "6cd5e0338b134493b949be0f730166b0"
+    }
+  ]
 }
