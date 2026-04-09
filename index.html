@@ -396,7 +396,7 @@ window.onload = function() {
 };
 
 // Proxy URL — update this after deploying your Cloudflare Worker
-var PROXY_URL = 'https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev/';
+var PROXY_URL = 'travis-resume-proxy.travisjt91.workers.dev';
 
 async function callClaude(msg, sys) {
   var r = await fetch(PROXY_URL, {
