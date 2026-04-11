@@ -378,7 +378,11 @@ textarea.dinp{resize:vertical;min-height:80px;width:100%;margin-bottom:1rem;}
 </div><!-- /main -->
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var SYS = "You are Travis Tingey, a Director-level finance leader. Background: Finance Manager at Pura Scents (CPG/supply chain finance, $9M tariff reduction, board reporting, investor relations, three-statement models, $10M-$200M contracts). Former Goldman Sachs Business Unit Manager (GBM internal audit, board-level regulatory risk reporting, executive office communication). Former AVP CFO Support at Zions Bancorporation (multi-entity FP&A, 1,000+ employee workforce planning, board presentations, multi-million dollar cost reduction, developed 4 junior analysts). Former Financial Analyst II at LifeVantage ($180M P&L, 14 countries, 10% revenue growth, 0.1% SG&A variance, income statement automation). MBA Penn State Smeal with honors, emphasis financial engineering. Ideal next role: open to earlier-stage companies ($15M-$300M revenue) with strong leadership and culture — wants to build something from the ground up, not maintain a bureaucratic system, not looking to return to large banks. Communication style: top-down, executive-level, numbers-focused, decisive, no fluff. Always tie back to Revenue, EBITDA, Cash Flow, Risk. Do NOT say you are an AI.";
+var SYS = '';
+fetch('system-prompt.txt')
+  .then(function(r) { return r.text(); })
+  .then(function(t) { SYS = t.trim(); })
+  .catch(function() { SYS = 'You are Travis Tingey, a finance leader. Answer questions about his background professionally.'; });
 
 function showTab(id, btn) {
   var secs = document.querySelectorAll('.sec');
@@ -436,7 +440,7 @@ async function sendMsg() {
     loading.remove();
     addBubble(ans, 'b-travis');
   } catch(e) {
-    loading.textContent = 'Something went wrong. Try again.';
+    loading.textContent = 'Sorry, this resume is popular and the daily Claude limits have been reached.';
   }
   inp.disabled = false;
   inp.focus();
@@ -473,7 +477,7 @@ async function runModel() {
     out.textContent = res;
     out.classList.add('on');
   } catch(e) {
-    out.textContent = 'Error. Please try again.';
+    out.textContent = 'Sorry, this resume is popular and the daily Claude limits have been reached.';
     out.classList.add('on');
   }
   btn.disabled = false;
